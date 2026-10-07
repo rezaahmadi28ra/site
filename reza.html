@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reza Ahmadi | صفحه شخصی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --dark: #141414;
+            --card: #1c1c1c;
+            --red: #e63946;
+            --red-hover: #ff4d5a;
+            --white: #f5f5f5;
+            --gray: #aaaaaa;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            padding: 50px 20px 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid var(--red);
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top center, rgba(230, 57, 70, 0.18), transparent 70%);
+            pointer-events: none;
+        }
+        .avatar {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--red);
+            box-shadow: 0 0 40px rgba(230, 57, 70, 0.65);
+            position: relative;
+            z-index: 2;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .avatar span {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: var(--red);
+            letter-spacing: 4px;
+            user-select: none;
+        }
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        header h1 span {
+            color: var(--red);
+        }
+        header p {
+            color: var(--gray);
+            font-size: 1.15rem;
+        }
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .section {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section:hover {
+            border-color: var(--red);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15);
+        }
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section h2 i {
+            color: var(--red);
+            font-size: 1.3rem;
+        }
+        .section h2::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to left, transparent, var(--red));
+            margin-right: 15px;
+        }
+        .about p {
+            margin-bottom: 14px;
+            color: #ddd;
+            text-align: justify;
+        }
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .interest-item {
+            background: var(--dark);
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 18px 16px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.35s ease;
+        }
+        .interest-item:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(230, 57, 70, 0.35);
+        }
+        .interest-item:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-12px);
+        }
+        .interest-item span.name {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .tooltip {
+            position: absolute;
+            bottom: 115%;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            background: #000;
+            color: var(--white);
+            padding: 9px 16px;
+            border-radius: 10px;
+            font-size: 0.87rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--red);
+            z-index: 20;
+            pointer-events: none;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -7px;
+            border: 7px solid transparent;
+            border-top-color: var(--red);
+        }
+        .skill {
+            margin-bottom: 22px;
+        }
+        .skill:last-child {
+            margin-bottom: 0;
+        }
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .skill-bar {
+            height: 10px;
+            background: #2a2a2a;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--red), #ff6b6b);
+            border-radius: 20px;
+            width: 0;
+            transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            background: transparent;
+            color: var(--white);
+            text-decoration: none;
+            border: 2px solid var(--red);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.98rem;
+        }
+        .links a:hover {
+            background: var(--red);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+        }
+        .links a i {
+            font-size: 1.15rem;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--gray);
+            font-size: 0.95rem;
+            border-top: 1px solid #222;
+        }
+        footer span {
+            color: var(--red);
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .avatar {
+                width: 135px;
+                height: 135px;
+            }
+            .avatar span {
+                font-size: 3.2rem;
+            }
+            .section {
+                padding: 22px 18px;
+            }
+            .interest-grid {
+                grid-template-columns: 1fr;
+            }
+            .links a {
+                padding: 12px 20px;
+                font-size: 0.92rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="avatar">
+            <span>RA</span>
+        </div>
+        <h1>Reza <span>Ahmadi</span></h1>
+        <p>۱۶ ساله | دانش‌آموز رشته کامپیوتر | ایران</p>
+    </header>
+    <div class="container">
+        <section class="section about">
+            <h2><i class="fas fa-user-circle"></i> درباره من</h2>
+            <p>سلام، من رضا هستم و ۱۶ سالمه و امسال سال دهم رشته کامپیوتر هستم.</p>
+            <p>هدف‌های بزرگی دارم و یکی از مهم‌ترین‌هاش اینه که بهترین برنامه‌نویس کشورم (ایران) بشم.</p>
+            <p>در حال حاظر کتابخانه‌های Python ، HTML ، CSS و Java رو یاد می‌گیرم و این اولین کار من در این حوزه است.</p>
+        </section>
+        <section class="section">
+            <h2><i class="fas fa-heart"></i> علایق من</h2>
+            <div class="interest-grid">
+                <div class="interest-item">
+                    <span class="name">برنامه‌نویسی</span>
+                    <span class="tooltip">یادگیری کدنویسی و ساخت وب‌سایت</span>
+                </div>
+                <div class="interest-item">
+                    <span class="name">بازی‌های کامپیوتری</span>
+                    <span class="tooltip">مهارت داشتن در انواع بازی‌های کامپیوتری</span>
+                </div>
+                <div class="interest-item">
+                    <span class="name">یادگیری انگلیسی</span>
+                    <span class="tooltip">بیش از ۶ سال سابقه یادگیری زبان انگلیسی</span>
+                </div>
+                <div class="interest-item">
+                    <span class="name">باشگاه و ورزش</span>
+                    <span class="tooltip">سررشته در انواع ورزش‌های رزمی</span>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2><i class="fas fa-code"></i> مهارت‌های من</h2>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>Python</span>
+                    <span>۱۰۰٪</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="100"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>English</span>
+                    <span>۱۰۰٪</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="100"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>HTML</span>
+                    <span>۶۰٪</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="60"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>CSS</span>
+                    <span>۵۵٪</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="55"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>Gaming</span>
+                    <span>۹۰٪</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="90"></div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2><i class="fas fa-link"></i> لینک‌های مفید</h2>
+            <div class="links">
+                <a href="https://www.google.com" target="_blank">
+                    <i class="fab fa-google"></i> Google
+                </a>
+                <a href="https://www.youtube.com" target="_blank">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="https://www.mozilla.org/firefox/" target="_blank">
+                    <i class="fab fa-firefox-browser"></i> Firefox
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i> اینستاگرام
+                </a>
+                <a href="https://telegram.org" target="_blank">
+                    <i class="fab fa-telegram"></i> تلگرام
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-x-twitter"></i> توییتر
+                </a>
+                <a href="https://www.tiktok.com" target="_blank">
+                    <i class="fab fa-tiktok"></i> تیک‌تاک
+                </a>
+            </div>
+        </section>
+    </div>
+    <footer>
+        ساخته شده با <span>❤</span> توسط رضا احمدی — ۲۰۲۵
+    </footer>
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        sections.forEach(section => observer.observe(section));
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    bar.style.width = bar.getAttribute('data-width') + '%';
+                    skillObserver.unobserve(bar);
+                }
+            });
+        }, { threshold: 0.5 });
+        skillBars.forEach(bar => skillObserver.observe(bar));
+        const interestItems = document.querySelectorAll('.interest-item');
+        interestItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const tooltip = this.querySelector('.tooltip');
+                if (window.innerWidth <= 600) {
+                    const isVisible = tooltip.style.opacity === '1';
+                    tooltip.style.opacity = isVisible ? '0' : '1';
+                    tooltip.style.visibility = isVisible ? 'hidden' : 'visible';
+                    tooltip.style.transform = isVisible 
+                        ? 'translateX(-50%) translateY(5px)' 
+                        : 'translateX(-50%) translateY(-12px)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
