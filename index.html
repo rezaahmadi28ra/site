@@ -1,428 +1,1120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
     <title>Reza Ahmadi | صفحه شخصی</title>
-    <meta name="description" content="من رضا احمدی هستم، دانش‌آموز رشته کامپیوتر و علاقه‌مند به برنامه‌نویسی. در حال یادگیری HTML، CSS، Python و Java هستم و هدفم تبدیل شدن به یکی از بهترین برنامه‌نویس‌های ایران است.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta
+      name="description"
+      content="من رضا احمدی هستم، دانش‌آموز رشته کامپیوتر و علاقه‌مند به برنامه‌نویسی."
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- فونت Vazirmatn -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- فونت چینی -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        :root {
-            --black: #0a0a0a;
-            --dark: #141414;
-            --card: #1c1c1c;
-            --red: #e63946;
-            --red-hover: #ff4d5a;
-            --white: #f5f5f5;
-            --gray: #aaaaaa;
+      :root {
+        --black: #0a0a0a;
+        --dark: #141414;
+        --card: #1c1c1c;
+        --red: #e63946;
+        --red-hover: #ff4d5a;
+        --white: #ffffff;
+        --gray: #aaaaaa;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+        background: var(--black);
+        color: var(--white);
+        line-height: 1.7;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body.lang-zh {
+        font-family: "Noto Sans SC", "Vazirmatn", sans-serif;
+      }
+
+      /* پس‌زمینه ذرات */
+      #particles {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      header,
+      .container,
+      footer,
+      .lang-switcher {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ========== انتخابگر زبان ========== */
+      .lang-switcher {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        z-index: 100;
+        display: flex;
+        gap: 6px;
+        background: rgba(20, 20, 20, 0.85);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(230, 57, 70, 0.35);
+        border-radius: 50px;
+        padding: 5px 6px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .lang-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        color: var(--gray);
+        font-size: 0.78rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: inherit;
+      }
+
+      .lang-btn:hover {
+        background: rgba(230, 57, 70, 0.2);
+        color: var(--white);
+      }
+
+      .lang-btn.active {
+        background: var(--red);
+        color: white;
+        box-shadow: 0 0 12px rgba(230, 57, 70, 0.5);
+      }
+
+      /* هدر */
+      header {
+        background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+        padding: 70px 20px 40px;
+        text-align: center;
+        position: relative;
+        border-bottom: 3px solid var(--red);
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at top center,
+          rgba(230, 57, 70, 0.18),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .avatar {
+        width: 170px;
+        height: 170px;
+        margin: 0 auto 25px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid var(--red);
+        box-shadow: 0 0 40px rgba(230, 57, 70, 0.65);
+        position: relative;
+        z-index: 2;
+        background: #111;
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      header h1 {
+        font-size: 2.6rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        position: relative;
+      }
+
+      header h1 span {
+        color: var(--red);
+      }
+
+      header .subtitle {
+        color: var(--gray);
+        font-size: 1.1rem;
+        position: relative;
+      }
+
+      /* انیمیشن تایپ */
+      .typing-container {
+        margin-top: 14px;
+        min-height: 36px;
+        color: var(--red-hover);
+        font-size: 1.2rem;
+        font-weight: 600;
+        position: relative;
+      }
+
+      .typing-text {
+        display: inline-block;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 2px;
+        height: 22px;
+        background: var(--red);
+        margin-right: 5px;
+        vertical-align: middle;
+        animation: blink 0.8s infinite;
+      }
+
+      [dir="ltr"] .cursor {
+        margin-right: 0;
+        margin-left: 5px;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        50% {
+          opacity: 0;
         }
-        body {
-            font-family: "Segoe UI", Tahoma, sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.7;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+      }
+
+      /* ساعت */
+      .clock-box {
+        margin: 25px auto 0;
+        width: fit-content;
+        min-width: 240px;
+        padding: 12px 25px;
+        background: rgba(230, 57, 70, 0.08);
+        border: 1px solid rgba(230, 57, 70, 0.5);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(230, 57, 70, 0.1);
+        position: relative;
+      }
+
+      .clock-time {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--red-hover);
+        direction: ltr;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .clock-date {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-top: 3px;
+      }
+
+      /* محتوا */
+      .container {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .section {
+        background: rgba(28, 28, 28, 0.94);
+        backdrop-filter: blur(8px);
+        border-radius: 18px;
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 1px solid #2a2a2a;
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section:hover {
+        border-color: var(--red);
+        box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15);
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .section h2 i {
+        color: var(--red);
+        font-size: 1.3rem;
+      }
+
+      .section h2::after {
+        content: "";
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(to left, transparent, var(--red));
+        margin-right: 15px;
+      }
+
+      [dir="ltr"] .section h2::after {
+        background: linear-gradient(to right, transparent, var(--red));
+        margin-right: 0;
+        margin-left: 15px;
+      }
+
+      /* درباره من */
+      .about p {
+        margin-bottom: 14px;
+        color: #ddd;
+        text-align: justify;
+      }
+
+      /* علایق */
+      .interest-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .interest-item {
+        background: var(--dark);
+        border: 1px solid #333;
+        border-radius: 14px;
+        padding: 18px 16px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.35s ease;
+      }
+
+      .interest-item:hover {
+        background: var(--red);
+        border-color: var(--red);
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(230, 57, 70, 0.35);
+      }
+
+      .interest-item span.name {
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      .tooltip {
+        position: absolute;
+        bottom: 115%;
+        left: 50%;
+        transform: translateX(-50%) translateY(5px);
+        background: #000;
+        color: var(--white);
+        padding: 9px 16px;
+        border-radius: 10px;
+        font-size: 0.87rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid var(--red);
+        z-index: 20;
+        pointer-events: none;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .interest-item:hover .tooltip,
+      .interest-item.active .tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-12px);
+      }
+
+      /* مهارت‌ها */
+      .skill {
+        margin-bottom: 22px;
+      }
+
+      .skill:last-child {
+        margin-bottom: 0;
+      }
+
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .skill-bar {
+        height: 10px;
+        background: #2a2a2a;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: linear-gradient(90deg, var(--red), #ff6b6b);
+        border-radius: 20px;
+        width: 0;
+        transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      /* لینک‌ها */
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: center;
+      }
+
+      .links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 26px;
+        background: transparent;
+        color: var(--white);
+        text-decoration: none;
+        border: 2px solid var(--red);
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 0.98rem;
+      }
+
+      .links a:hover {
+        background: var(--red);
+        color: white;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+      }
+
+      .links a i {
+        font-size: 1.15rem;
+      }
+
+      /* فوتر */
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gray);
+        font-size: 0.95rem;
+        border-top: 1px solid #222;
+        background: rgba(10, 10, 10, 0.85);
+      }
+
+      footer span.heart {
+        color: var(--red);
+      }
+
+      /* موبایل */
+      @media (max-width: 600px) {
         header {
-            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
-            padding: 50px 20px 40px;
-            text-align: center;
-            position: relative;
-            border-bottom: 3px solid var(--red);
+          padding-top: 80px;
         }
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top center, rgba(230, 57, 70, 0.18), transparent 70%);
-            pointer-events: none;
-        }
-        .avatar {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--red);
-            box-shadow: 0 0 40px rgba(230, 57, 70, 0.65);
-            position: relative;
-            z-index: 2;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .avatar span {
-            font-size: 3.8rem;
-            font-weight: 800;
-            color: var(--red);
-            letter-spacing: 4px;
-            user-select: none;
-        }
+
         header h1 {
-            font-size: 2.6rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
+          font-size: 2rem;
         }
-        header h1 span {
-            color: var(--red);
+
+        .avatar {
+          width: 140px;
+          height: 140px;
         }
-        header p {
-            color: var(--gray);
-            font-size: 1.15rem;
-        }
-        .container {
-            max-width: 920px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+
         .section {
-            background: var(--card);
-            border-radius: 18px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid #2a2a2a;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+          padding: 22px 18px;
         }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section:hover {
-            border-color: var(--red);
-            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15);
-        }
-        .section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .section h2 i {
-            color: var(--red);
-            font-size: 1.3rem;
-        }
-        .section h2::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(to left, transparent, var(--red));
-            margin-right: 15px;
-        }
-        .about p {
-            margin-bottom: 14px;
-            color: #ddd;
-            text-align: justify;
-        }
+
         .interest-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+          grid-template-columns: 1fr;
         }
-        .interest-item {
-            background: var(--dark);
-            border: 1px solid #333;
-            border-radius: 14px;
-            padding: 18px 16px;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.35s ease;
-        }
-        .interest-item:hover {
-            background: var(--red);
-            border-color: var(--red);
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(230, 57, 70, 0.35);
-        }
-        .interest-item:hover .tooltip {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(-12px);
-        }
-        .interest-item span.name {
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-        .tooltip {
-            position: absolute;
-            bottom: 115%;
-            left: 50%;
-            transform: translateX(-50%) translateY(5px);
-            background: #000;
-            color: var(--white);
-            padding: 9px 16px;
-            border-radius: 10px;
-            font-size: 0.87rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid var(--red);
-            z-index: 20;
-            pointer-events: none;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-        .tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -7px;
-            border: 7px solid transparent;
-            border-top-color: var(--red);
-        }
-        .skill {
-            margin-bottom: 22px;
-        }
-        .skill:last-child {
-            margin-bottom: 0;
-        }
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        .skill-bar {
-            height: 10px;
-            background: #2a2a2a;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--red), #ff6b6b);
-            border-radius: 20px;
-            width: 0;
-            transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            justify-content: center;
-        }
+
         .links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 13px 26px;
-            background: transparent;
-            color: var(--white);
-            text-decoration: none;
-            border: 2px solid var(--red);
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.98rem;
+          padding: 12px 20px;
+          font-size: 0.92rem;
         }
-        .links a:hover {
-            background: var(--red);
-            color: white;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+
+        .typing-container {
+          font-size: 1rem;
         }
-        .links a i {
-            font-size: 1.15rem;
+
+        .clock-time {
+          font-size: 1.5rem;
         }
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: var(--gray);
-            font-size: 0.95rem;
-            border-top: 1px solid #222;
+
+        .lang-switcher {
+          top: 12px;
+          right: 12px;
+          padding: 4px 5px;
         }
-        footer span {
-            color: var(--red);
+
+        .lang-btn {
+          width: 32px;
+          height: 32px;
+          font-size: 0.72rem;
         }
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            .avatar {
-                width: 135px;
-                height: 135px;
-            }
-            .avatar span {
-                font-size: 3.2rem;
-            }
-            .section {
-                padding: 22px 18px;
-            }
-            .interest-grid {
-                grid-template-columns: 1fr;
-            }
-            .links a {
-                padding: 12px 20px;
-                font-size: 0.92rem;
-            }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
         }
+      }
     </style>
-</head>
-<body>
-    <header>
-        <div class="avatar">
-            <span>RA</span>
-        </div>
-        <h1>Reza <span>Ahmadi</span></h1>
-        <p>۱۶ ساله | دانش‌آموز رشته کامپیوتر | ایران</p>
-    </header>
-    <div class="container">
-        <section class="section about">
-            <h2><i class="fas fa-user-circle"></i> درباره من</h2>
-            <p>سلام، من رضا هستم و ۱۶ سالمه و امسال سال دهم رشته کامپیوتر هستم.</p>
-            <p>هدف‌های بزرگی دارم و یکی از مهم‌ترین‌هاش اینه که بهترین برنامه‌نویس کشورم (ایران) بشم.</p>
-            <p>در حال حاظر کتابخانه‌های Python ، HTML ، CSS و Java رو یاد می‌گیرم و این اولین کار من در این حوزه است.</p>
-        </section>
-        <section class="section">
-            <h2><i class="fas fa-heart"></i> علایق من</h2>
-            <div class="interest-grid">
-                <div class="interest-item">
-                    <span class="name">برنامه‌نویسی</span>
-                    <span class="tooltip">یادگیری کدنویسی و ساخت وب‌سایت</span>
-                </div>
-                <div class="interest-item">
-                    <span class="name">بازی‌های کامپیوتری</span>
-                    <span class="tooltip">مهارت داشتن در انواع بازی‌های کامپیوتری</span>
-                </div>
-                <div class="interest-item">
-                    <span class="name">یادگیری انگلیسی</span>
-                    <span class="tooltip">بیش از ۶ سال سابقه یادگیری زبان انگلیسی</span>
-                </div>
-                <div class="interest-item">
-                    <span class="name">باشگاه و ورزش</span>
-                    <span class="tooltip">سررشته در انواع ورزش‌های رزمی</span>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <h2><i class="fas fa-code"></i> مهارت‌های من</h2>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>Python</span>
-                    <span>۱۰۰٪</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="100"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>English</span>
-                    <span>۱۰۰٪</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="100"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>HTML</span>
-                    <span>۶۰٪</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="60"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>CSS</span>
-                    <span>۵۵٪</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="55"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>Gaming</span>
-                    <span>۹۰٪</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="90"></div>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <h2><i class="fas fa-link"></i> لینک‌های مفید</h2>
-            <div class="links">
-                <a href="https://www.google.com" target="_blank">
-                    <i class="fab fa-google"></i> Google
-                </a>
-                <a href="https://www.youtube.com" target="_blank">
-                    <i class="fab fa-youtube"></i> YouTube
-                </a>
-                <a href="https://www.mozilla.org/firefox/" target="_blank">
-                    <i class="fab fa-firefox-browser"></i> Firefox
-                </a>
-                <a href="https://www.instagram.com" target="_blank">
-                    <i class="fab fa-instagram"></i> اینستاگرام
-                </a>
-                <a href="https://telegram.org" target="_blank">
-                    <i class="fab fa-telegram"></i> تلگرام
-                </a>
-                <a href="https://twitter.com" target="_blank">
-                    <i class="fab fa-x-twitter"></i> توییتر
-                </a>
-                <a href="https://www.tiktok.com" target="_blank">
-                    <i class="fab fa-tiktok"></i> تیک‌تاک
-                </a>
-            </div>
-        </section>
+  </head>
+
+  <body>
+    <!-- انتخابگر زبان -->
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn active" data-lang="fa" title="فارسی">FA</button>
+      <button class="lang-btn" data-lang="en" title="English">EN</button>
+      <button class="lang-btn" data-lang="zh" title="中文">中文</button>
+      <button class="lang-btn" data-lang="tr" title="Türkçe">TR</button>
     </div>
+
+    <!-- پس‌زمینه ذرات -->
+    <canvas id="particles" aria-hidden="true"></canvas>
+
+    <!-- هدر -->
+    <header>
+      <div class="avatar">
+        <img src="avatar.png" alt="Reza Ahmadi" />
+      </div>
+
+      <h1 data-i18n="name">رضا <span>احمدی</span></h1>
+      <p class="subtitle" data-i18n="subtitle">
+        ۱۶ ساله | دانش‌آموز رشته کامپیوتر | ایران
+      </p>
+
+      <!-- انیمیشن تایپ (فقط فارسی) -->
+      <div class="typing-container">
+        <span class="typing-text" id="typing"></span>
+        <span class="cursor"></span>
+      </div>
+
+      <!-- ساعت -->
+      <div class="clock-box">
+        <div class="clock-time" id="clock">۰۰:۰۰:۰۰</div>
+        <div class="clock-date" id="date">در حال دریافت تاریخ...</div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- درباره من -->
+      <section class="section about">
+        <h2>
+          <i class="fas fa-user-circle"></i>
+          <span data-i18n="aboutTitle">درباره من</span>
+        </h2>
+        <p data-i18n="about1">
+          سلام، من رضا هستم و ۱۶ سالمه و امسال سال دهم رشته کامپیوتر هستم.
+        </p>
+        <p data-i18n="about2">
+          هدف‌های بزرگی دارم و یکی از مهم‌ترین‌هاش اینه که بهترین برنامه‌نویس
+          کشورم (ایران) بشم.
+        </p>
+        <p data-i18n="about3">
+          در حال حاضر Python، HTML، CSS و Java رو یاد می‌گیرم و این اولین کار من
+          در این حوزه است.
+        </p>
+      </section>
+
+      <!-- علایق -->
+      <section class="section">
+        <h2>
+          <i class="fas fa-heart"></i>
+          <span data-i18n="interestsTitle">علایق من</span>
+        </h2>
+        <div class="interest-grid">
+          <div class="interest-item" tabindex="0">
+            <span class="name" data-i18n="int1">برنامه‌نویسی</span>
+            <span class="tooltip" data-i18n="int1tip"
+              >یادگیری کدنویسی و ساخت وب‌سایت</span
+            >
+          </div>
+          <div class="interest-item" tabindex="0">
+            <span class="name" data-i18n="int2">بازی‌های کامپیوتری</span>
+            <span class="tooltip" data-i18n="int2tip"
+              >مهارت داشتن در انواع بازی‌های کامپیوتری</span
+            >
+          </div>
+          <div class="interest-item" tabindex="0">
+            <span class="name" data-i18n="int3">یادگیری انگلیسی</span>
+            <span class="tooltip" data-i18n="int3tip"
+              >بیش از ۶ سال سابقه یادگیری زبان انگلیسی</span
+            >
+          </div>
+          <div class="interest-item" tabindex="0">
+            <span class="name" data-i18n="int4">باشگاه و ورزش</span>
+            <span class="tooltip" data-i18n="int4tip"
+              >سررشته در انواع ورزش‌های رزمی</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- مهارت‌ها -->
+      <section class="section">
+        <h2>
+          <i class="fas fa-code"></i>
+          <span data-i18n="skillsTitle">مهارت‌های من</span>
+        </h2>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>Python</span>
+            <span>70%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="70"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>English</span>
+            <span>80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="80"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>HTML</span>
+            <span>30%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="30"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>CSS</span>
+            <span>30%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="30"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>Gaming</span>
+            <span>100%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="100"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- لینک‌ها -->
+      <section class="section">
+        <h2>
+          <i class="fas fa-link"></i>
+          <span data-i18n="linksTitle">لینک‌های مفید</span>
+        </h2>
+        <div class="links">
+          <a
+            href="https://t.me/Invictus_man"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-telegram"></i>
+            <span data-i18n="linkTelegram">تلگرام</span>
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-instagram"></i>
+            <span data-i18n="linkInsta">اینستاگرام</span>
+          </a>
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a
+            href="https://www.youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-youtube"></i> YouTube
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- فوتر -->
     <footer>
-        ساخته شده با <span>❤</span> توسط رضا احمدی — ۲۰۲۵
+      <span data-i18n="footer">ساخته شده با</span> <span class="heart">❤</span>
+      <span data-i18n="footerBy">توسط رضا احمدی</span> — ۱۴۰۴ / ۲۰۲۶
     </footer>
+
     <script>
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-        sections.forEach(section => observer.observe(section));
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const bar = entry.target;
-                    bar.style.width = bar.getAttribute('data-width') + '%';
-                    skillObserver.unobserve(bar);
-                }
-            });
-        }, { threshold: 0.5 });
-        skillBars.forEach(bar => skillObserver.observe(bar));
-        const interestItems = document.querySelectorAll('.interest-item');
-        interestItems.forEach(item => {
-            item.addEventListener('click', function () {
-                const tooltip = this.querySelector('.tooltip');
-                if (window.innerWidth <= 600) {
-                    const isVisible = tooltip.style.opacity === '1';
-                    tooltip.style.opacity = isVisible ? '0' : '1';
-                    tooltip.style.visibility = isVisible ? 'hidden' : 'visible';
-                    tooltip.style.transform = isVisible 
-                        ? 'translateX(-50%) translateY(5px)' 
-                        : 'translateX(-50%) translateY(-12px)';
-                }
-            });
+      /* ==================================
+       ترجمه‌ها
+    ================================== */
+      const translations = {
+        fa: {
+          name: "رضا <span>احمدی</span>",
+          subtitle: "۱۶ ساله | دانش‌آموز رشته کامپیوتر | ایران",
+          aboutTitle: "درباره من",
+          about1:
+            "سلام، من رضا هستم و ۱۶ سالمه و امسال سال دهم رشته کامپیوتر هستم.",
+          about2:
+            "هدف‌های بزرگی دارم و یکی از مهم‌ترین‌هاش اینه که بهترین برنامه‌نویس کشورم (ایران) بشم.",
+          about3:
+            "در حال حاضر Python، HTML، CSS و Java رو یاد می‌گیرم و این اولین کار من در این حوزه است.",
+          interestsTitle: "علایق من",
+          int1: "برنامه‌نویسی",
+          int1tip: "یادگیری کدنویسی و ساخت وب‌سایت",
+          int2: "بازی‌های کامپیوتری",
+          int2tip: "مهارت داشتن در انواع بازی‌های کامپیوتری",
+          int3: "یادگیری انگلیسی",
+          int3tip: "بیش از ۶ سال سابقه یادگیری زبان انگلیسی",
+          int4: "باشگاه و ورزش",
+          int4tip: "سررشته در انواع ورزش‌های رزمی",
+          skillsTitle: "مهارت‌های من",
+          linksTitle: "لینک‌های مفید",
+          linkTelegram: "تلگرام",
+          linkInsta: "اینستاگرام",
+          footer: "ساخته شده با",
+          footerBy: "توسط رضا احمدی",
+        },
+        en: {
+          name: "Reza <span>Ahmadi</span>",
+          subtitle: "16 years old | Computer Science Student | Iran",
+          aboutTitle: "About Me",
+          about1:
+            "Hi, I'm Reza, 16 years old, and currently in 10th grade studying Computer Science.",
+          about2:
+            "I have big goals, and one of the most important is to become the best programmer in my country (Iran).",
+          about3:
+            "Right now I'm learning Python, HTML, CSS and Java. This is my first project in this field.",
+          interestsTitle: "My Interests",
+          int1: "Programming",
+          int1tip: "Learning to code and building websites",
+          int2: "Computer Games",
+          int2tip: "Skilled in various computer games",
+          int3: "Learning English",
+          int3tip: "More than 6 years of learning English",
+          int4: "Gym & Sports",
+          int4tip: "Experienced in martial arts",
+          skillsTitle: "My Skills",
+          linksTitle: "Useful Links",
+          linkTelegram: "Telegram",
+          linkInsta: "Instagram",
+          footer: "Made with",
+          footerBy: "by Reza Ahmadi",
+        },
+        zh: {
+          name: "Reza <span>Ahmadi</span>",
+          subtitle: "16岁 | 计算机专业学生 | 伊朗",
+          aboutTitle: "关于我",
+          about1: "你好，我是Reza，16岁，目前是计算机专业十年级学生。",
+          about2: "我有远大的目标，其中最重要的是成为伊朗最优秀的程序员。",
+          about3:
+            "目前我正在学习Python、HTML、CSS和Java。这是我在这个领域的第一个作品。",
+          interestsTitle: "我的兴趣",
+          int1: "编程",
+          int1tip: "学习编程和制作网站",
+          int2: "电脑游戏",
+          int2tip: "擅长各种电脑游戏",
+          int3: "学习英语",
+          int3tip: "学习英语超过6年",
+          int4: "健身与运动",
+          int4tip: "精通各种武术",
+          skillsTitle: "我的技能",
+          linksTitle: "有用链接",
+          linkTelegram: "Telegram",
+          linkInsta: "Instagram",
+          footer: "用",
+          footerBy: "制作 by Reza Ahmadi",
+        },
+        tr: {
+          name: "Reza <span>Ahmadi</span>",
+          subtitle: "16 yaşında | Bilgisayar Öğrencisi | İran",
+          aboutTitle: "Hakkımda",
+          about1:
+            "Merhaba, ben Reza, 16 yaşındayım ve bilgisayar bölümünde 10. sınıftayım.",
+          about2:
+            "Büyük hedeflerim var ve en önemlisi ülkem İran'ın en iyi programcısı olmak.",
+          about3:
+            "Şu anda Python, HTML, CSS ve Java öğreniyorum. Bu alandaki ilk çalışmam.",
+          interestsTitle: "İlgi Alanlarım",
+          int1: "Programlama",
+          int1tip: "Kod öğrenmek ve web sitesi yapmak",
+          int2: "Bilgisayar Oyunları",
+          int2tip: "Çeşitli bilgisayar oyunlarında yetenekli",
+          int3: "İngilizce Öğrenme",
+          int3tip: "6 yıldan fazla İngilizce öğrenme tecrübesi",
+          int4: "Spor ve Spor Salonu",
+          int4tip: "Dövüş sanatlarında deneyimli",
+          skillsTitle: "Yeteneklerim",
+          linksTitle: "Faydalı Bağlantılar",
+          linkTelegram: "Telegram",
+          linkInsta: "Instagram",
+          footer: "Sevgiyle yapıldı",
+          footerBy: "Reza Ahmadi tarafından",
+        },
+      };
+
+      /* ==================================
+       تغییر زبان
+    ================================== */
+      let currentLang = "fa";
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+        document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+
+        document.body.className = "";
+        document.body.classList.add("lang-" + lang);
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (t[key]) {
+            el.innerHTML = t[key];
+          }
         });
+
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.lang === lang);
+        });
+
+        localStorage.setItem("preferredLang", lang);
+      }
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setLanguage(btn.dataset.lang);
+        });
+      });
+
+      const savedLang = localStorage.getItem("preferredLang") || "fa";
+      setLanguage(savedLang);
+
+      /* ==================================
+       ۱. انیمیشن تایپ (فقط فارسی)
+    ================================== */
+      const typingElement = document.getElementById("typing");
+
+      const typingWords = [
+        "برنامه‌نویس آینده",
+        "علاقه‌مند به پایتون",
+        "یادگیرنده وب",
+        "رویاهای بزرگ، کدهای بزرگ‌تر",
+      ];
+
+      let wordIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      function typeEffect() {
+        if (reducedMotion) {
+          typingElement.textContent = "برنامه‌نویس آینده";
+          return;
+        }
+
+        const currentWord = typingWords[wordIndex];
+
+        if (!deleting) {
+          typingElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+
+          if (charIndex === currentWord.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1600);
+            return;
+          }
+        } else {
+          typingElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+
+          if (charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % typingWords.length;
+          }
+        }
+
+        setTimeout(typeEffect, deleting ? 40 : 85);
+      }
+
+      typeEffect();
+
+      /* ==================================
+       ۲. ساعت و تاریخ شمسی
+    ================================== */
+      const clockElement = document.getElementById("clock");
+      const dateElement = document.getElementById("date");
+
+      const persianTimeFormatter = new Intl.DateTimeFormat(
+        "fa-IR-u-ca-persian-nu-latn",
+        {
+          timeZone: "Asia/Tehran",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        },
+      );
+
+      const persianDateFormatter = new Intl.DateTimeFormat(
+        "fa-IR-u-ca-persian",
+        {
+          timeZone: "Asia/Tehran",
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        },
+      );
+
+      function updateClock() {
+        const now = new Date();
+        clockElement.textContent = persianTimeFormatter.format(now);
+        dateElement.textContent = persianDateFormatter.format(now);
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+
+      /* ==================================
+       ۳. پس‌زمینه ذرات
+    ================================== */
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+
+      let particles = [];
+      let animationFrame;
+      let width = 0;
+      let height = 0;
+
+      const particleCount = 65;
+      const connectionDistance = 120;
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        createParticles();
+      }
+
+      function createParticles() {
+        const count = Math.min(
+          particleCount,
+          Math.max(25, Math.floor((width * height) / 18000)),
+        );
+        particles = [];
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: Math.random() * 2 + 1,
+            speedX: (Math.random() - 0.5) * 0.6,
+            speedY: (Math.random() - 0.5) * 0.6,
+            opacity: Math.random() * 0.6 + 0.2,
+          });
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach((particle) => {
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(230, 57, 70, ${particle.opacity})`;
+          ctx.shadowBlur = 12;
+          ctx.shadowColor = "#e63946";
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          particle.x += particle.speedX;
+          particle.y += particle.speedY;
+
+          if (particle.x < 0 || particle.x > width) particle.speedX *= -1;
+          if (particle.y < 0 || particle.y > height) particle.speedY *= -1;
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p1 = particles[i];
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < connectionDistance) {
+              const opacity = (1 - distance / connectionDistance) * 0.18;
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(230, 57, 70, ${opacity})`;
+              ctx.lineWidth = 0.7;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animateParticles() {
+        drawParticles();
+        animationFrame = requestAnimationFrame(animateParticles);
+      }
+
+      resizeCanvas();
+
+      const motionPreference = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+
+      function startParticleAnimation() {
+        cancelAnimationFrame(animationFrame);
+        if (!motionPreference.matches && !document.hidden) {
+          animateParticles();
+        } else {
+          drawParticles();
+        }
+      }
+
+      window.addEventListener("resize", () => {
+        resizeCanvas();
+        startParticleAnimation();
+      });
+
+      document.addEventListener("visibilitychange", startParticleAnimation);
+      motionPreference.addEventListener("change", startParticleAnimation);
+      startParticleAnimation();
+
+      /* ==================================
+       ۴. نمایش انیمیشنی بخش‌ها
+    ================================== */
+      const sections = document.querySelectorAll(".section");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      sections.forEach((section) => observer.observe(section));
+
+      /* ==================================
+       ۵. انیمیشن نوار مهارت‌ها
+    ================================== */
+      const skillBars = document.querySelectorAll(".skill-progress");
+
+      const skillObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const bar = entry.target;
+              bar.style.width = bar.getAttribute("data-width") + "%";
+              skillObserver.unobserve(bar);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      skillBars.forEach((bar) => skillObserver.observe(bar));
+
+      /* ==================================
+       ۶. tooltip در موبایل
+    ================================== */
+      const interestItems = document.querySelectorAll(".interest-item");
+
+      interestItems.forEach((item) => {
+        function toggleTooltip() {
+          if (window.innerWidth <= 600) {
+            item.classList.toggle("active");
+          }
+        }
+        item.addEventListener("click", toggleTooltip);
+        item.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleTooltip();
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
